@@ -218,7 +218,7 @@ $(document).ready(function () {
                 // console.log(destination);
                 if (destination >= 30) {
                     destination = 30;
-                    canPlay = false;
+                    // canPlay = false;
                     gameFinished = true;
                     $("#rollDice").addClass("invisible");
                 }
@@ -284,7 +284,7 @@ $(document).ready(function () {
     function getRandomNumber(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-        return 29;
+
         return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso
     }
 
