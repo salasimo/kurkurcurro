@@ -1,0 +1,175 @@
+.grid-container {
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    position: relative;
+    /* top: 100px; */
+    /* transform: translateY(-30%); */
+    margin: 0 auto;
+    width: 100%;
+    /* max-width: calc(100vh - 150px); */
+    height: 100%;
+    max-height: 70vh;
+    max-width: 70vh;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px 5px;
+    grid-template-areas:
+        ". . c24 c23 c22 c21 c20 c19 . . "
+        ". . c25 . . . . c18 . . "
+        ". . c26 . c14 c15 c16 c17 . ."
+        ". . c27 . c13 . . . . . "
+        ". . c28 . c12 c11 c10 c9 c8 . "
+        ". . c29 . . . . . c7 . "
+        ". c30 c30 c30 . . . . c6 . "
+        ". c30 c30 c30 . c2 c3 c4 c5 . "
+        ". . . . . c1 . . . . "
+        ". . . . . c0 . . . . ";
+    /* ". . . . . cb . . . "; */
+
+    /* grid-template-rows: auto; */
+}
+/* .grid-item::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+} */
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+    margin: 0 auto;
+}
+
+.cb {
+    grid-area: cb;
+}
+.c0 {
+    grid-area: c0;
+}
+
+.c1 {
+    grid-area: c1;
+}
+
+.c2 {
+    grid-area: c2;
+}
+
+.c3 {
+    grid-area: c3;
+}
+
+.c4 {
+    grid-area: c4;
+}
+
+.c5 {
+    grid-area: c5;
+}
+
+.c6 {
+    grid-area: c6;
+}
+
+.c7 {
+    grid-area: c7;
+}
+
+.c8 {
+    grid-area: c8;
+}
+
+.c9 {
+    grid-area: c9;
+}
+
+.c10 {
+    grid-area: c10;
+}
+
+.c11 {
+    grid-area: c11;
+}
+
+.c12 {
+    grid-area: c12;
+}
+
+.c13 {
+    grid-area: c13;
+}
+
+.c14 {
+    grid-area: c14;
+}
+
+.c15 {
+    grid-area: c15;
+}
+
+.c16 {
+    grid-area: c16;
+}
+
+.c17 {
+    grid-area: c17;
+}
+
+.c18 {
+    grid-area: c18;
+}
+
+.c19 {
+    grid-area: c19;
+}
+
+.c20 {
+    grid-area: c20;
+}
+
+.c21 {
+    grid-area: c21;
+}
+
+.c22 {
+    grid-area: c22;
+}
+
+.c23 {
+    grid-area: c23;
+}
+
+.c24 {
+    grid-area: c24;
+}
+
+.c25 {
+    grid-area: c25;
+}
+
+.c26 {
+    grid-area: c26;
+}
+
+.c27 {
+    grid-area: c27;
+}
+
+.c28 {
+    grid-area: c28;
+}
+
+.c29 {
+    grid-area: c29;
+}
+
+.c30 {
+    grid-area: c30;
+}
+
+.casella {
+    border: 1px solid black;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gioco dell'Oca</title>
+
+        <link rel="stylesheet" href="grid.css" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="main.js" defer></script>
+        <script
+            src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"
+            defer
+        ></script>
+        <!-- <script>
+            confetti.start();
+        </script> -->
+    </head>
+    <body>
+        <div id="estrazione" class="hidden"><p></p></div>
+
+        <!-- <img class="bg-img" src="bg.png" alt="" /> -->
+        <header>
+            <h1 class="invisible">Kur Kur Currò</h1>
+            <button id="sound-switch">
+                <img
+                    id="mute"
+                    src="mute.svg"
+                    class=""
+                    alt="Disattiva effetti sonori"
+                />
+                <img
+                    id="sound"
+                    src="sound.svg"
+                    class="hidden"
+                    alt="Attiva effetti sonori"
+                />
+            </button>
+            <p id="audio-info-msg" class="hidden"></p>
+            <button id="reload-btn" class="invisible">
+                <img id="reload" src="reload.svg" class="" alt="Riavvia" />
+            </button>
+        </header>
+        <main>
+            <div id="istruzioni" class="">
+                <h1>Kur Kur Currò</h1>
+                <p>
+                    <b>ISTRUZIONI</b><br /><br />
+                    Lancia i dadi, anzi il dado, altrimenti dura troppo poco.
+                    Potrai spostarti di tante caselle quanto il punteggio
+                    ottenuto.<br /><br />Rispondi correttamente alla domanda per
+                    poter proseguire, sbaglia e dovrai ingurgitare tot ml (da
+                    dichiarare a inizio gioco) prima di poter riprendere la
+                    partita. Attenzione! Le caselle IMPREVISTO ti metteranno a
+                    dura prova, ma ti permetteranno di balzare in avanti.<br /><br /><b
+                        >Pronti, Partenza...</b
+                    >
+                    <button id="start">VIA!</button>
+                </p>
+            </div>
+            <div id="modale-reload" class="hidden">
+                <p>Confermi di voler riavviare il gioco?</p>
+                <button id="confirm-reload">Riavvia</button>
+                <button id="abort-reload">Annulla</button>
+            </div>
+            <div class="grid-container invisible">
+                <div id="box-question" class="hidden">
+                    <h2 class="titolo-casella"></h2>
+                    <h2 class="numero"></h2>
+                    <p class="question"></p>
+                    <div class="buttons-imprevisto hidden">
+                        <p class="text-imprevisto"></p>
+                        <button id="correct">Vola avanti</button>
+                        <button id="wrong">Torna indietro</button>
+                    </div>
+                </div>
+                <div id="pedina">
+                    <img src="fra-pedina.png" alt="Curropedina" />
+                </div>
+                <div class="cb"></div>
+
+                <div class="c0">
+                    <div class="arrow"></div>
+                </div>
+
+                <div class="casella c1" n="1"></div>
+                <div class="casella c2" n="2"></div>
+                <div class="casella c3" n="3"></div>
+                <div
+                    class="casella c4 imprevisto"
+                    n="4"
+                    correct="7"
+                    wrong="2"
+                ></div>
+                <div class="casella c5" n="5"></div>
+                <div class="casella c6" n="6"></div>
+                <div class="casella c7" n="7"></div>
+                <div
+                    class="casella c8 imprevisto"
+                    n="8"
+                    correct="13"
+                    wrong="6"
+                ></div>
+                <div class="casella c9" n="9"></div>
+                <div class="casella c10" n="10"></div>
+                <div class="casella c11" n="11"></div>
+                <div class="casella c12" n="12"></div>
+                <div class="casella c13" n="13"></div>
+                <div
+                    class="casella c14 imprevisto"
+                    n="14"
+                    correct="16"
+                    wrong="11"
+                ></div>
+                <div class="casella c15" n="15"></div>
+                <div class="casella c16" n="16"></div>
+                <div
+                    class="casella c17 imprevisto"
+                    n="17"
+                    correct="19"
+                    wrong="15"
+                ></div>
+                <div class="casella c18" n="18"></div>
+                <div class="casella c19" n="19"></div>
+                <div
+                    class="casella c20 imprevisto"
+                    n="20"
+                    correct="23"
+                    wrong="19"
+                ></div>
+                <div class="casella c21" n="21"></div>
+                <div class="casella c22" n="22"></div>
+                <div class="casella c23" n="23"></div>
+                <div
+                    class="casella c24 imprevisto"
+                    n="24"
+                    correct="28"
+                    wrong="22"
+                ></div>
+                <div
+                    class="casella c25 imprevisto"
+                    n="25"
+                    correct="29"
+                    wrong="23"
+                ></div>
+                <div class="casella c26" n="26"></div>
+                <div class="casella c27" n="27"></div>
+                <div class="casella c28" n="28"></div>
+                <div class="casella c29" n="29"></div>
+                <div class="casella c30" n="30">
+                    <!-- <img id="img30" src="30-bg.jpg" alt="" /> -->
+                </div>
+            </div>
+            <button id="rollDice" class="invisible">Lancia il dado</button>
+
+            <p id="info-message"></p>
+        </main>
+        <audio id="ping">
+            <source src="ping.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="bell">
+            <source src="bell.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="down">
+            <source src="down.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="up">
+            <source src="up.mp3" type="audio/mp3" />
+        </audio>
+    </body>
+</html>

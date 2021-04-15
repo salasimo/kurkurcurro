@@ -1,0 +1,385 @@
+@font-face {
+    font-family: "Baveuse";
+    src: url("fonts/Baveuse-Regular.woff2") format("woff2"),
+        url("fonts/Baveuse-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Baveuse 3D";
+    src: url("fonts/Baveuse3D-Regular.woff2") format("woff2"),
+        url("fonts/Baveuse3D-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    user-select: none;
+    background-image: url("bg.jpg");
+    background-size: 500px;
+}
+header {
+    /* position: relative; */
+    margin-bottom: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+header h1 {
+    text-align: center;
+}
+
+.numero {
+    font-family: "Baveuse", sans-serif;
+}
+
+#rollDice,
+#correct,
+#wrong,
+#confirm-reload,
+#abort-reload {
+    margin: 10px auto;
+    font-size: 26px;
+    display: block;
+    border: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    text-transform: uppercase;
+}
+
+#rollDice:hover {
+    padding: 5px 25px;
+    color: darkred;
+}
+
+#correct,
+#wrong,
+#confirm-reload,
+#abort-reload {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    z-index: 15;
+}
+
+#correct,
+#confirm-reload {
+    background-color: darkgreen;
+}
+#wrong,
+#abort-reload {
+    background-color: darkred;
+}
+
+#correct:hover,
+#wrong:hover {
+    border: 2px solid #fff;
+}
+
+#info-message {
+    margin: 5px auto;
+    text-align: center;
+}
+
+#pedina {
+    width: 38px;
+    height: 38px;
+    z-index: 3;
+    /* background-color: gold; */
+
+    /* posizione pedina */
+    grid-area: c0;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* border: 1px solid yellow; */
+}
+
+#pedina img {
+    position: relative;
+    width: auto;
+    height: 150%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* border: 1px solid green; */
+    /* transform-origin: -50px -50px; */
+    /* rotate: 45deg; */
+}
+
+.casella {
+    pointer-events: none;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px 0px #000000;
+    border-radius: 3px;
+    position: relative;
+}
+.casella.enabled {
+    pointer-events: initial;
+    cursor: pointer;
+}
+
+.casella.imprevisto {
+    border-color: #fff;
+    background-color: darkred;
+    color: #fff;
+}
+.casella p {
+    /* text-align: center; */
+    /* padding-top: 20px; */
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 22px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#box-question,
+#modale-reload,
+#istruzioni {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #1d1d1d;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    width: 80vw;
+    max-width: 600px;
+    color: #1d1d1d;
+    z-index: 40;
+    overflow: hidden;
+}
+
+#box-question .titolo-casella {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+#box-question .question {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+#box-question .numero {
+    font-size: 200px;
+    position: absolute;
+    right: -25px;
+    bottom: -50px;
+    opacity: 0.3;
+    /* border: 1px solid red; */
+}
+
+#estrazione {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 280px;
+    z-index: 30;
+
+    color: #1d1d1d;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#estrazione.hidden {
+    display: none;
+}
+
+.casella.visited {
+    background-color: darkblue;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.c30 {
+    pointer-events: none !important;
+}
+
+.c30 p {
+    font-size: 50px;
+}
+
+#sound-switch,
+#reload-btn {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+#reload-btn {
+    right: 60px;
+}
+
+#sound-switch img,
+#reload-btn img {
+    height: 75%;
+    width: auto;
+}
+
+#audio-info-msg {
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    z-index: 88;
+}
+
+#modale-reload p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.c30 {
+    background-image: url("30bg.jpg");
+    background-size: cover;
+}
+
+.casella p {
+    font-family: "Baveuse", sans-serif;
+}
+.c30 p {
+    font-family: "Baveuse 3D", sans-serif;
+    font-size: 80px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+h1 {
+    font-family: "Baveuse 3D", sans-serif;
+    font-size: 60px;
+    margin-top: 40px;
+}
+
+#istruzioni h1 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Media Queries
+================== */
+@media (max-width: 580px) {
+    .casella p {
+        font-size: 16px;
+    }
+    #pedina {
+        width: 24px;
+        height: 24px;
+    }
+
+    #rollDice,
+    #correct,
+    #wrong,
+    #confirm-reload,
+    #abort-reload {
+        margin: 8px auto;
+        font-size: 18px;
+
+        padding: 5px 13px;
+    }
+    #box-question,
+    #modale-reload {
+        padding: 15px;
+    }
+    #box-question .titolo-casella {
+        font-size: 20px;
+    }
+
+    #box-question .question {
+        font-size: 16px;
+    }
+
+    .c30 p {
+        font-size: 50px;
+    }
+
+    #sound-switch,
+    #reload-btn {
+        height: 20px;
+        width: 20px;
+    }
+    #reload-btn {
+        right: 45px;
+    }
+
+    #modale-reload p {
+        font-size: 18px;
+    }
+    #audio-info-msg {
+        font-size: 14px;
+    }
+    header h1 {
+        font-size: 50px;
+    }
+    .c30 p {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 410px) {
+    .casella p {
+        font-size: 12px;
+    }
+    .c30 p {
+        font-size: 30px;
+    }
+    header h1 {
+        font-size: 40px;
+    }
+}
+@media (min-width: 900px) {
+    header h1 {
+        margin-top: 0;
+    }
+} ;
