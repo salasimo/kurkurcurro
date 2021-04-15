@@ -54,7 +54,8 @@ header h1 {
 #correct,
 #wrong,
 #confirm-reload,
-#abort-reload {
+#abort-reload,
+#start {
     margin: 10px auto;
     font-size: 26px;
     display: block;
@@ -67,6 +68,10 @@ header h1 {
     transition: 0.5s;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     text-transform: uppercase;
+}
+
+#start {
+    margin-top: 20px;
 }
 
 #rollDice:hover {
@@ -382,4 +387,15 @@ header h1 {
     header h1 {
         margin-top: 0;
     }
-} ;
+}
+@media (max-width: 600px) {
+    #istruzioni {
+        padding: 15px;
+    }
+    #istruzioni h1 {
+        font-size: 30px;
+    }
+    #istruzioni p {
+        font-size: 14px;
+    }
+}

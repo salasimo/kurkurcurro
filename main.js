@@ -119,7 +119,7 @@ $(document).ready(function () {
         $("#pedina").css("grid-area", "c0");
         $(".visited").removeClass("visited");
         $("#modale-reload").addClass("hidden");
-        $("#rollDice").removeClass("hidden");
+        $("#rollDice").removeClass("invisible");
     });
     $("#abort-reload").on("click", function () {
         $("#modale-reload").addClass("hidden");
@@ -284,12 +284,13 @@ $(document).ready(function () {
     function getRandomNumber(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
+        return 29;
         return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso
     }
 
-    // function getRandomNumber(min, max) {
-    //     min = Math.ceil(min);
-    //     max = Math.floor(max);
-    //     return 14; //Il max è incluso e il min è incluso
-    // }
+    //     function getRandomNumber(min, max) {
+    //         min = Math.ceil(min);
+    //         max = Math.floor(max);
+    //         return 29; //Il max è incluso e il min è incluso
+    //     }
 });
