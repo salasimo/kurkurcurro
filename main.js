@@ -119,6 +119,7 @@ $(document).ready(function () {
         $("#pedina").css("grid-area", "c0");
         $(".visited").removeClass("visited");
         $("#modale-reload").addClass("hidden");
+        $("#rollDice").removeClass("hidden");
     });
     $("#abort-reload").on("click", function () {
         $("#modale-reload").addClass("hidden");
