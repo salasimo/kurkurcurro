@@ -74,6 +74,7 @@
                         <button id="correct">Vola avanti</button>
                         <button id="wrong">Torna indietro</button>
                     </div>
+                    <button id="close-qst" class="hidden">Chiudi</button>
                 </div>
                 <div id="pedina">
                     <img src="fra-pedina.png" alt="Curropedina" />
@@ -155,6 +156,20 @@
             <button id="rollDice" class="invisible">Lancia il dado</button>
 
             <p id="info-message"></p>
+            <div id="final-message" class="hidden">
+                <img src="fra-corona.png" alt="" />
+                <div>
+                    <h1>Complimenti, sei vecchia!</h1>
+                    <p>
+                        Il tuo regalo ti sta aspettando a Bologna. Se non sei
+                        stata in grado di leggere questa frase, ottimo lavoro...
+                        sei sbronza!
+                    </p>
+                    <button id="final-stage">
+                        ORA RISPONDI ALLE CASELLE SALTATE
+                    </button>
+                </div>
+            </div>
         </main>
         <audio id="ping">
             <source src="ping.mp3" type="audio/mp3" />
@@ -167,6 +182,9 @@
         </audio>
         <audio id="up">
             <source src="up.mp3" type="audio/mp3" />
+        </audio>
+        <audio id="tada">
+            <source src="tada.mp3" type="audio/mp3" />
         </audio>
     </body>
 </html>

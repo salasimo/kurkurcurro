@@ -8,7 +8,7 @@ $(document).ready(function () {
         null,
         "In che anno siamo andate in vacanza in Grecia Tu,Vale, Giusy, Lig e Manu?",
         "Tu che te ne intendi... Pepsi o Coca-Cola: quale ricetta contiene più zuccheri?",
-        "In zona arancione posso andare da Zara dentro un centro commerciale?",
+        "In zona arancione posso andare da Zara dentro un centro commerciale di sabato?",
         "Hey, canta una canzone di Gigi d’Alessio",
         "Ok, vivi a Bologna ma quanto ne sai? Come si chiama il sindaco?",
         "Manu's question: chi sono Corallo e Turrò?",
@@ -71,6 +71,8 @@ $(document).ready(function () {
     });
 
     $(".casella").on("click", function () {
+        $(".buttons-imprevisto").addClass("hidden");
+
         numCasella = $(this).attr("n");
         correct = $(this).attr("correct");
         wrong = $(this).attr("wrong");
@@ -103,6 +105,12 @@ $(document).ready(function () {
         }, 500);
     });
 
+    $("#final-stage").click(function () {
+        $("#final-message").addClass("hidden");
+        $(".casella").css("pointer-events", "auto");
+        $(".casella").css("cursor", "pointer");
+    });
+
     // user settings game
 
     $("#sound-switch").on("click", function () {
@@ -113,6 +121,8 @@ $(document).ready(function () {
     $("#reload-btn").on("click", function () {
         $("#modale-reload").removeClass("hidden");
         $("#box-question").addClass("hidden");
+        $("#final-message").addClass("hidden");
+        $("#close-qst").addClass("hidden");
     });
     $("#confirm-reload").on("click", function () {
         position = 0;
@@ -120,9 +130,16 @@ $(document).ready(function () {
         $(".visited").removeClass("visited");
         $("#modale-reload").addClass("hidden");
         $("#rollDice").removeClass("invisible");
+        $(".casella").css("pointer-events", "none");
+        $(".casella").css("cursor", "none");
     });
     $("#abort-reload").on("click", function () {
         $("#modale-reload").addClass("hidden");
+    });
+
+    $("#close-qst").on("click", function () {
+        $("#box-question").addClass("hidden");
+        $(".buttons-imprevisto").addClass("hidden");
     });
 
     /* =====FUNZIONI======
@@ -217,10 +234,21 @@ $(document).ready(function () {
                 let destination = position + number;
                 // console.log(destination);
                 if (destination >= 30) {
+                    // VITTORIA----------------------------------------------------
                     destination = 30;
                     // canPlay = false;
                     gameFinished = true;
                     $("#rollDice").addClass("invisible");
+
+                    setTimeout(function () {
+                        $("#final-message").removeClass("hidden");
+                        if (sound) {
+                            let tada = document.getElementById("tada");
+                            tada.load();
+                            tada.play();
+                        }
+                        $("#close-qst").removeClass("hidden");
+                    }, 3000);
                 }
 
                 movePedina(position, destination);
@@ -284,7 +312,7 @@ $(document).ready(function () {
     function getRandomNumber(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
-
+        // return 24;
         return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso
     }
 

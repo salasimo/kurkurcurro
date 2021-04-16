@@ -34,7 +34,7 @@ header {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .invisible {
@@ -55,7 +55,9 @@ header h1 {
 #wrong,
 #confirm-reload,
 #abort-reload,
-#start {
+#start,
+#final-stage,
+#close-qst {
     margin: 10px auto;
     font-size: 26px;
     display: block;
@@ -68,6 +70,10 @@ header h1 {
     transition: 0.5s;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     text-transform: uppercase;
+}
+#final-stage {
+    margin-top: 20px;
+    font-size: 18px;
 }
 
 #start {
@@ -168,7 +174,8 @@ header h1 {
 
 #box-question,
 #modale-reload,
-#istruzioni {
+#istruzioni,
+#final-message {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -312,6 +319,29 @@ header h1 {
     margin-right: 10px;
 }
 
+#final-message {
+    display: flex;
+    width: 90vw;
+    max-width: 900px;
+}
+
+#final-message > img {
+    max-width: 200px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+#final-message p {
+    margin-top: 20px;
+    font-size: 24px;
+}
+#final-message > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* Media Queries
 ================== */
 @media (max-width: 580px) {
@@ -397,5 +427,20 @@ header h1 {
     }
     #istruzioni p {
         font-size: 14px;
+    }
+    #final-message h1 {
+        font-size: 36px;
+    }
+    #final-message p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #final-message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }
