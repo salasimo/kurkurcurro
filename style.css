@@ -157,8 +157,8 @@ header h1 {
     position: relative;
 }
 .casella.enabled {
-    pointer-events: initial;
-    cursor: pointer;
+    pointer-events: initial !important;
+    cursor: pointer !important;
 }
 
 .casella.imprevisto {
