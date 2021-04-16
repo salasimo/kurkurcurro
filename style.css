@@ -71,6 +71,11 @@ header h1 {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     text-transform: uppercase;
 }
+
+#close-qst {
+    position: relative;
+    z-index: 50;
+}
 #final-stage {
     margin-top: 20px;
     font-size: 18px;
@@ -323,11 +328,14 @@ header h1 {
     display: flex;
     width: 90vw;
     max-width: 900px;
+    max-height: 98vh;
 }
 
 #final-message > img {
     max-width: 200px;
     height: auto;
+    max-height: 35vh;
+
     align-items: center;
     justify-content: center;
     margin: 10px;
